@@ -1,0 +1,34 @@
+/* Full-page container with scroll */
+.manual-gallery-container {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto; /* allow manual scroll */
+  overflow-x: hidden;
+  background: #000;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 images per row */
+  grid-auto-rows: 20vh; /* row height */
+  gap: 5px;
+  scroll-behavior: smooth;
+  padding: 5px;
+}
+
+/* Gallery items */
+.manual-gallery-item {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.manual-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Hover zoom effect */
+.manual-gallery-item:hover img {
+  transform: scale(1.05);
+}

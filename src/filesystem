@@ -1,0 +1,242 @@
+Node.js File System (fs) – Complete Guide
+
+The File System (fs) module allows Node.js to read, write, update, delete, and stream files and directories on the server.
+
+Node.js provides 3 ways to work with files:
+
+Synchronous (Blocking)
+
+Asynchronous – Callback-based
+
+Asynchronous – Promise-based
+
+Streams (for large files)
+
+1️⃣ Importing the File System Module
+const fs = require("fs");              // Callback & Sync API
+const fsPromises = require("fs/promises"); // Promise-based API
+
+2️⃣ Synchronous File Operations (Blocking)
+🔹 What it means
+
+Blocks the event loop
+
+No other request is processed until the operation finishes
+
+NOT recommended for production servers
+
+🔹 When to use
+
+CLI tools
+
+Startup configuration
+
+Small scripts
+
+Example: Read File (Sync)
+const data = fs.readFileSync("data.txt", "utf8");
+console.log(data);
+
+Example: Write File (Sync)
+fs.writeFileSync("log.txt", "Server started");
+
+
+❌ Bad for APIs – slows down all users.
+
+3️⃣ Asynchronous File Operations (Callback-based)
+🔹 Why this is important
+
+Non-blocking
+
+Other requests continue processing
+
+Core strength of Node.js
+
+Example: Read File (Async)
+fs.readFile("data.txt", "utf8", (err, data) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  console.log(data);
+});
+
+Example: Write File (Async)
+fs.writeFile("output.txt", "Hello Node.js", err => {
+  if (err) throw err;
+  console.log("File written");
+});
+
+4️⃣ Promise-based File System (fs/promises) ✅ Best Practice
+🔹 Why preferred
+
+Cleaner syntax
+
+Works perfectly with async/await
+
+Better error handling
+
+Example: Read File
+const fs = require("fs/promises");
+
+async function readFile() {
+  try {
+    const data = await fs.readFile("data.txt", "utf8");
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+Example: Write File
+await fs.writeFile("file.txt", "Saved using promises");
+
+5️⃣ Creating & Deleting Files
+Create File
+await fs.writeFile("new.txt", "New file created");
+
+Delete File
+await fs.unlink("new.txt");
+
+❗ Error Scenario
+
+If file doesn’t exist:
+
+ENOENT: no such file or directory
+
+
+Always wrap in try/catch.
+
+6️⃣ Append Data to a File (Logging Scenario)
+Real-world use
+
+Logs
+
+Audit trails
+
+Chat history
+
+await fs.appendFile("logs.txt", "User logged in\n");
+
+7️⃣ Working with Directories
+Create Directory
+await fs.mkdir("uploads");
+
+Create Nested Directories
+await fs.mkdir("a/b/c", { recursive: true });
+
+Read Directory Contents
+const files = await fs.readdir("./uploads");
+console.log(files);
+
+Delete Directory
+await fs.rmdir("uploads", { recursive: true });
+
+8️⃣ File Information (Stats)
+Check if File or Directory
+const stats = await fs.stat("data.txt");
+
+console.log(stats.isFile());      // true
+console.log(stats.isDirectory()); // false
+
+File Size
+console.log(stats.size); // bytes
+
+9️⃣ Check if File Exists (IMPORTANT)
+
+❌ Deprecated
+
+fs.existsSync("file.txt");
+
+
+✅ Recommended
+
+try {
+  await fs.access("file.txt");
+  console.log("File exists");
+} catch {
+  console.log("File does not exist");
+}
+
+🔟 Rename / Move Files
+await fs.rename("old.txt", "new.txt");
+
+
+Move file:
+
+await fs.rename("temp/file.txt", "uploads/file.txt");
+
+1️⃣1️⃣ Streams (VERY IMPORTANT)
+🔹 Why streams?
+
+Handles large files
+
+Uses less memory
+
+Processes data in chunks
+
+Example: Read Stream
+const stream = fs.createReadStream("large.mp4");
+
+stream.on("data", chunk => {
+  console.log(chunk.length);
+});
+
+Example: Copy Large File
+const read = fs.createReadStream("video.mp4");
+const write = fs.createWriteStream("copy.mp4");
+
+read.pipe(write);
+
+1️⃣2️⃣ File Upload Scenario (Express)
+app.post("/upload", (req, res) => {
+  const writeStream = fs.createWriteStream("file.txt");
+
+  req.pipe(writeStream);
+
+  req.on("end", () => {
+    res.send("Upload complete");
+  });
+});
+
+1️⃣3️⃣ Error Handling (CRITICAL)
+Common Errors
+Error Code	Meaning
+ENOENT	File not found
+EACCES	Permission denied
+EISDIR	Path is directory
+Proper Handling
+try {
+  await fs.readFile("secret.txt");
+} catch (err) {
+  if (err.code === "ENOENT") {
+    console.log("File not found");
+  }
+}
+
+1️⃣4️⃣ Security Best Practices ⚠️
+
+❌ Never allow direct file paths from users:
+
+fs.readFile(req.query.file); // DANGEROUS
+
+
+✅ Always validate:
+
+path.join(__dirname, "files", filename);
+
+1️⃣5️⃣ Performance Best Practices
+
+✅ Use async or promises
+✅ Use streams for large files
+❌ Avoid sync methods in servers
+❌ Avoid loading large files into memory
+
+🔚 Summary
+
+✔ Sync – scripts, CLI
+✔ Async – APIs
+✔ Promises – best choice
+✔ Streams – large files
+✔ Always handle errors
+✔ Validate paths

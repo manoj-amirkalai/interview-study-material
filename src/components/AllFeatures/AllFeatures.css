@@ -1,0 +1,37 @@
+/* features */
+.features-page {
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.features-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #dbdee4;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-card {
+  background: #ffffff1c;
+  border-radius: 12px;
+  padding: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border: 2px solid rgba(255, 255, 255, 0.384);
+}
+
+

@@ -1,0 +1,40 @@
+
+/* menu */
+.menu-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 2rem;
+  background-color: #0f172a;
+  color: #ffffff;
+}
+
+.menu-logo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menu-items {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  cursor: pointer;
+  font-size: 1rem;
+  color: #e5e7eb;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  color: #38bdf8;
+}
+.active{
+  color: #38bdf8;
+}

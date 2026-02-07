@@ -1,0 +1,56 @@
+.drag-page {
+  padding: 2rem;
+  min-height: 100vh;
+  background: #111111; /* Dark background */
+  color: #f1f5f9;      /* Light text */
+}
+
+.drag-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.drag-lists {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.drag-container {
+  background: #1e1e1e; /* Dark container */
+  flex: 1;
+  min-width: 200px;
+  padding: 1rem;
+  border-radius: 12px;
+  height: max-content;
+  border: 1px solid #333; /* subtle border */
+}
+
+.drag-container h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.drag-item {
+  background: #2c2c2c; /* dark card */
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 0.8rem;
+  min-height: 18px;
+  cursor: grab;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  color: #f1f5f9;
+}
+
+.drag-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+  background: #3a3a3a; /* slightly lighter on hover */
+}
+
+.drag-no-item{
+  border: 2px dotted rgb(255, 255, 255);
+}

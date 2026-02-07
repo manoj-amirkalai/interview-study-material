@@ -1,0 +1,167 @@
+1. UI Interaction & DOM Handling
+
+These are very popular in interviews.
+
+Examples:
+
+Implement Drag and Drop (without libraries)
+
+Create a Sortable List
+
+Build a Modal / Popup with open–close logic
+
+Create a Dropdown that closes on outside click
+
+Implement a Tooltip on hover
+
+Build a Tabs component
+
+What they test:
+
+DOM manipulation
+
+Event handling
+
+State management
+
+Clean JS logic
+
+2. Scrolling & Performance
+
+Very common for real-world apps.
+
+Examples:
+
+Implement Infinite Scroll
+
+Create Lazy Loading images
+
+Detect when user reaches bottom of page
+
+Build a Virtualized List (render only visible items)
+
+Implement Scroll to Top button
+
+What they test:
+
+Scroll events
+
+Performance optimization
+
+API pagination
+
+Debounce / Throttle
+
+3. API & Data Handling
+
+Almost guaranteed in interviews.
+
+Examples:
+
+Fetch data from API and display list
+
+Add Search + Filter
+
+Implement Pagination
+
+Handle Loading / Error / Empty states
+
+Implement Debounce search input
+
+What they test:
+
+Async JS (fetch, async/await)
+
+State updates
+
+Error handling
+
+UX thinking
+
+4. Forms & Validation
+
+Very practical tasks.
+
+Examples:
+
+Build a Login / Signup form
+
+Implement Form Validation
+
+Show inline error messages
+
+Disable submit button until form is valid
+
+Password strength indicator
+
+What they test:
+
+Controlled inputs
+
+Validation logic
+
+User feedback
+
+5. JavaScript Logic Challenges
+
+Often mixed with UI.
+
+Examples:
+
+Implement Debounce / Throttle
+
+Create a Todo App
+
+Implement Undo / Redo
+
+Build a Timer / Countdown
+
+Create a Carousel / Slider
+
+What they test:
+
+Core JavaScript
+
+Closures
+
+State logic
+
+6. CSS & Layout Tasks
+
+Especially for frontend roles.
+
+Examples:
+
+Create a Responsive Layout
+
+Center a div (multiple ways)
+
+Build a Sticky Header
+
+Implement Dark / Light Mode
+
+CSS Grid / Flexbox layout
+
+What they test:
+
+CSS fundamentals
+
+Responsiveness
+
+Real-world layout skills
+
+7. React-Specific Practical Tasks (if React role)
+
+Very common now.
+
+Examples:
+
+Build Infinite Scroll in React
+
+Drag and Drop using React state
+
+Create reusable components
+
+Use useEffect for API calls
+
+Optimize with useMemo / useCallback

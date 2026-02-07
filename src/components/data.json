@@ -1,0 +1,26 @@
+[
+  { "name": "Drag & Drop", "value": "drag-and-drop", "path": "/drag-and-drop" },
+  { "name": "Infinite Scroll", "value": "infinite-scroll", "path": "/infinite-scroll" },
+  { "name": "Image Carousel", "value": "image-carousel", "path": "/image-carousel" },
+  { "name": "Image Gallery", "value": "image-gallery", "path": "/image-gallery" },
+  { "name": "Autocomplete Search", "value": "autocomplete", "path": "/autocomplete" },
+  { "name": "Debouncing", "value": "debouncing", "path": "/debouncing" },
+  { "name": "Throttling", "value": "throttling", "path": "/throttling" },
+  { "name": "Event Bubbling", "value": "event-bubbling", "path": "/event-bubbling" },
+  { "name": "Event Capturing", "value": "event-capturing", "path": "/event-capturing" },
+  {
+    "name": "Intersection Observer Infinite Scroll",
+    "value": "intersection-observer",
+    "path": "/intersection-observer"
+  },
+  {
+    "name": "React 18 vs 19 Features",
+    "value": "react-features",
+    "path": "/react-features"
+  },
+  {
+    "name": "React-19 Features Comprehensive",
+    "value": "react19-features-comprehensive",
+    "path": "/react19-features-comprehensive"
+  }
+]

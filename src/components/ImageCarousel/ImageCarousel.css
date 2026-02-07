@@ -1,0 +1,114 @@
+.gallery-page {
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #f0f0f0;
+}
+
+/* Containers */
+.gallery-container {
+  overflow: hidden; /* hide scrollbar */
+  border-radius: 8px;
+  background: #111;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+/* Horizontal container */
+.gallery-container.horizontal {
+  height: 180px;
+}
+
+/* Vertical container */
+.gallery-container.vertical {
+  width: 300px;
+  height: 400px;
+  flex-direction: column;
+}
+
+/* Track */
+.gallery-track {
+  display: flex;
+  gap: 15px;
+  animation-play-state: running;
+}
+
+.gallery-container:hover .gallery-track{
+  animation-play-state: paused;
+}
+/* Horizontal track */
+.horizontal-track {
+  flex-direction: row;
+  animation: scroll-horizontal 20s linear infinite;
+}
+
+/* Vertical track */
+.vertical-track {
+  flex-direction: column;
+  animation: scroll-vertical 20s linear infinite;
+}
+
+/* Items */
+.gallery-item {
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect */
+.gallery-item:hover img {
+  transform: scale(1.2);
+}
+.gallery-item:hover{
+  transform: scale(0.9);
+}
+
+
+/* Horizontal items */
+.horizontal-item {
+  flex-shrink: 0;
+  width: 250px;
+}
+
+/* Vertical items */
+.vertical-item {
+  flex-shrink: 0;
+  height: 120px;
+}
+
+/* Animations */
+@keyframes scroll-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* move half of duplicated track */
+  }
+}
+
+@keyframes scroll-vertical {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%); /* move half of duplicated track */
+  }
+}
