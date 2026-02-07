@@ -9,6 +9,8 @@ import AutoScrollVerticalGalleryManual from './components/AutoScrollVerticalGall
 import AutocompleteSearch from './components/AutocompleteSearch/AutocompleteSearch';
 import React19Features from './components/React19Features/React19Features';
 import React19FeaturesComprehensive from './components/React19Features/React19FeaturesComprehensive';
+import React18Features from './components/React18Features/React18Features';
+import AssetLoadingOptimization from './components/React19Features/AssetLoadingOptimization';
 
 function App() {
   return (
@@ -22,7 +24,9 @@ function App() {
         <Route path="/image-gallery" element={<AutoScrollVerticalGalleryManual />} />
         <Route path="/autocomplete" element={<AutocompleteSearch />} />
         <Route path="/react-features" element={<React19Features />} />
+        <Route path="/react-18-features" element={<React18Features />} />
         <Route path="/react19-features-comprehensive" element={<React19FeaturesComprehensive />} />
+        <Route path="/asset-loading-optimization" element={<AssetLoadingOptimization />} />
       </Routes>
     </div>
   );

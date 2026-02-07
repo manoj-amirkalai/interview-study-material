@@ -14,10 +14,16 @@
     "path": "/intersection-observer"
   },
   {
+    "name": "React 18 Features",
+    "value": "react-18-features",
+    "path": "/react-18-features"
+  },
+  {
     "name": "React 18 vs 19 Features",
     "value": "react-features",
     "path": "/react-features"
   },
+  { "name": "AssetLoadingOptimization", "value": "asset-loading-optimization", "path": "/asset-loading-optimization" },
   {
     "name": "React-19 Features Comprehensive",
     "value": "react19-features-comprehensive",

@@ -521,29 +521,242 @@ function UserProfile({ userId }) {
 ```
 
 ### 8. Asset Loading Optimization
-**What it is:** Better control over preloading stylesheets and fonts.
+**What it is:** Better control over preloading stylesheets, fonts, and modules with `preinitializeModule` and `preloadModule`.
+
+#### Understanding Module Preloading Functions
+
+React 19 provides two critical functions for optimizing script/module loading:
+
+**A. `preinitializeModule(href, options?)`**
+- **Purpose**: Eagerly initializes an external script module and makes it immediately available
+- **When to use**: When you know a module will be needed very soon and want to prioritize it
+- **Behavior**: 
+  - Downloads and executes the module immediately
+  - Blocks rendering until the module is loaded and executed
+  - Suitable for critical modules needed right away
+  - Sets `importance="high"` by default
+
+**B. `preloadModule(href, options?)`**
+- **Purpose**: Starts downloading a module but doesn't execute it until needed
+- **When to use**: When you want to download a module in advance but don't need it immediately
+- **Behavior**:
+  - Downloads the module in the background
+  - Doesn't block rendering
+  - Module executes when actually imported/used in code
+  - Lower priority than `preinitializeModule`
+
+#### Detailed Example with Explanations
 
 ```javascript
-// React 19 - preinitializeModule, preloadModule for script optimization
-import { preinitializeModule, preloadModule } from 'react-dom';
+// React 19 - Comprehensive module preloading strategy
+import { 
+  preinitializeModule,  // For critical modules
+  preloadModule         // For non-critical modules
+} from 'react-dom';
 
-function DynamicComponent() {
-  // Pre-initialize modules for faster loading
-  preinitializeModule('https://cdn.example.com/heavy-lib.js');
+// ============================================================================
+// SCENARIO 1: Critical Library (e.g., Authentication)
+// ============================================================================
+function LoginComponent() {
+  // Use preinitializeModule for critical auth library
+  // This ensures auth is ready before user interacts with form
+  preinitializeModule(
+    'https://cdn.example.com/auth-sdk.js',
+    { as: 'script', crossOrigin: 'anonymous' }
+  );
   
-  return <SomeComponent />;
+  return (
+    <form>
+      <input type="email" placeholder="Email" />
+      <input type="password" placeholder="Password" />
+      <button type="submit">Login</button>
+    </form>
+  );
 }
 
-// Also better stylesheet preloading
-import { preload } from 'react-dom';
-
-function App() {
-  preload('styles.css', { as: 'style' });
-  preload('font.woff2', { as: 'font', type: 'font/woff2' });
+// ============================================================================
+// SCENARIO 2: Heavy Analytics Library (Non-Critical)
+// ============================================================================
+function AnalyticsComponent() {
+  // Use preloadModule for analytics - download in background
+  // No need to block page interaction for analytics
+  preloadModule(
+    'https://cdn.example.com/analytics.js',
+    { as: 'script' }
+  );
   
-  return <div>App</div>;
+  return <div>Page content loads immediately</div>;
+}
+
+// ============================================================================
+// SCENARIO 3: Conditional Module Loading (Code Splitting)
+// ============================================================================
+function PremiumFeature() {
+  const [showPremium, setShowPremium] = useState(false);
+  
+  const handlePremiumClick = async () => {
+    // Preload module on button hover/focus for UX
+    preloadModule('https://cdn.example.com/premium-feature.js');
+    setShowPremium(true);
+  };
+  
+  return (
+    <button onMouseEnter={handlePremiumClick}>
+      Click for Premium Features
+    </button>
+  );
+}
+
+// ============================================================================
+// SCENARIO 4: Combined with Other Preload Functions
+// ============================================================================
+import { preload, preloadModule } from 'react-dom';
+
+function OptimizedApp() {
+  // Critical scripts - use preinitializeModule
+  preinitializeModule('https://cdn.example.com/core.js');
+  
+  // Non-critical modules - use preloadModule
+  preloadModule('https://cdn.example.com/charts.js');
+  preloadModule('https://cdn.example.com/animations.js');
+  
+  // Stylesheets - use preload
+  preload('/styles/critical.css', { as: 'style' });
+  preload('/fonts/main.woff2', { 
+    as: 'font', 
+    type: 'font/woff2',
+    crossOrigin: 'anonymous'
+  });
+  
+  return <div>App with optimized asset loading</div>;
+}
+
+// ============================================================================
+// Advanced: Strategic Preloading Based on Route/Feature
+// ============================================================================
+function Router() {
+  const [route, setRoute] = useState('home');
+  
+  // Preload dashboard modules when user hovers on dashboard link
+  const preloadDashboard = () => {
+    preloadModule('https://cdn.example.com/dashboard-charts.js');
+    preloadModule('https://cdn.example.com/dashboard-analytics.js');
+    preload('/styles/dashboard.css', { as: 'style' });
+  };
+  
+  return (
+    <>
+      <nav>
+        <a href="/" onClick={() => setRoute('home')}>Home</a>
+        <a 
+          href="/dashboard" 
+          onClick={() => setRoute('dashboard')}
+          onMouseEnter={preloadDashboard}
+        >
+          Dashboard
+        </a>
+      </nav>
+      
+      {route === 'home' && <HomePage />}
+      {route === 'dashboard' && <DashboardPage />}
+    </>
+  );
 }
 ```
+
+#### Key Differences: preinitializeModule vs preloadModule
+
+| Feature | `preinitializeModule` | `preloadModule` |
+|---------|----------------------|-----------------|
+| **Execution** | Executes immediately | Executes on demand |
+| **Blocking** | Blocks rendering | Non-blocking |
+| **Priority** | High (importance="high") | Normal |
+| **Use Case** | Critical modules needed right away | Non-critical, can wait |
+| **Performance** | Slower initial load | Faster initial load |
+| **Best For** | Auth, core features | Analytics, nice-to-have features |
+
+#### Common Parameters (options object)
+
+```javascript
+{
+  // Specify module type
+  as: 'script',  // or 'module' for ES modules
+  
+  // CORS settings
+  crossOrigin: 'anonymous',  // or 'use-credentials'
+  
+  // Integrity checking
+  integrity: 'sha384-...',   // Subresource Integrity
+  
+  // Nonce for CSP
+  nonce: 'abc123xyz',
+  
+  // Module type
+  type: 'module',  // or 'text/javascript'
+}
+```
+
+#### Real-World Optimization Pattern
+
+```javascript
+// src/app.jsx
+import { preinitializeModule, preloadModule } from 'react-dom';
+
+export default function App() {
+  // 1. Critical for app functionality
+  preinitializeModule(
+    'https://cdn.example.com/lodash.min.js',
+    { as: 'script' }
+  );
+  
+  // 2. Needed soon, but not immediately critical
+  preloadModule(
+    'https://cdn.example.com/d3-charts.js',
+    { as: 'module' }
+  );
+  
+  // 3. Heavy library, can load in background
+  preloadModule(
+    'https://cdn.example.com/ml-library.js',
+    { as: 'module' }
+  );
+  
+  // 4. Stylesheet optimization
+  preload('/fonts/roboto.woff2', { 
+    as: 'font',
+    type: 'font/woff2',
+    crossOrigin: 'anonymous'
+  });
+  
+  return <MainApp />;
+}
+```
+
+#### Performance Benefits
+
+**Before React 19 (Manual Script Loading):**
+```javascript
+// Old way - manual script tags
+const script = document.createElement('script');
+script.src = 'https://cdn.example.com/lib.js';
+script.async = true;
+document.head.appendChild(script);
+// No control over timing or priority
+```
+
+**After React 19 (Declarative Asset Loading):**
+```javascript
+// React 19 - Declarative and optimized
+preinitializeModule('https://cdn.example.com/lib.js');
+// React automatically handles timing, priority, and cleanup
+```
+
+#### Performance Metrics Impact
+
+- **Time to Interactive (TTI)**: Using `preloadModule` reduces TTI by deferring non-critical modules
+- **First Contentful Paint (FCP)**: `preinitializeModule` for critical assets only (avoid blocking)
+- **Network Efficiency**: Smart preloading reduces redundant requests
+- **Bundle Size**: Enables proper code-splitting and lazy loading patterns
 
 ---
 
