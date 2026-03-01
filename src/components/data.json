@@ -28,5 +28,20 @@
     "name": "React-19 Features Comprehensive",
     "value": "react19-features-comprehensive",
     "path": "/react19-features-comprehensive"
+  },
+  {
+    "name": "Server Actions Hooks",
+    "value": "server-actions-hooks",
+    "path": "/server-actions-hooks"
+  },
+  {
+    "name": "Suspense & Lazy Loading",
+    "value": "suspense-lazy-loading",
+    "path": "/suspense-lazy-loading"
+  },
+  {
+    "name": "Progress Bar Implementation",
+    "value": "progress-bar",
+    "path": "/progress-bar"
   }
 ]

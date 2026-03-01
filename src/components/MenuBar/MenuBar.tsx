@@ -4,7 +4,8 @@ import "./MenuBar.css";
 const MenuBar = () => {
   const location = useLocation();
   const menuItemsExtra = [
-    { name: "Home", value: "home", path: "/" }
+    { name: "Home", value: "home", path: "/" },
+    { name: "Progress Bar", value: "progress-bar", path: "/progress-bar" }
   ];
   return (
     <nav className="menu-bar">
@@ -15,9 +16,8 @@ const MenuBar = () => {
           <li key={item.path}>
             <Link
               to={item.path}
-              className={`menu-item ${
-                location.pathname === item.path ? "active" : ""
-              }`}
+              className={`menu-item ${location.pathname === item.path ? "active" : ""
+                }`}
             >
               {item.name}
             </Link>

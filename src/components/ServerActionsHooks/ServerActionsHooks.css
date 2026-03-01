@@ -1,0 +1,418 @@
+/* Dark Mode Theme Variables */
+:root {
+  --color-bg-primary: #0f0f0f;
+  --color-bg-secondary: #1a1a1a;
+  --color-bg-tertiary: #252525;
+  --color-text-primary: #e8e8e8;
+  --color-text-secondary: #b0b0b0;
+  --color-border: #333333;
+  --color-accent-primary: #667eea;
+  --color-accent-secondary: #764ba2;
+  --color-success: #4ade80;
+  --color-error: #ff6b6b;
+  --color-warning: #fbbf24;
+}
+
+/* Main Container */
+.server-actions-showcase {
+  padding: 30px;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+  min-height: 100vh;
+}
+
+.showcase-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.showcase-subtitle {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  margin-bottom: 30px;
+}
+
+/* Grid Layout */
+.hooks-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* Section Styles */
+.hook-section {
+  background: var(--color-bg-secondary);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.hook-section:hover {
+  box-shadow: 0 12px 48px rgba(102, 126, 234, 0.15);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+/* Section Header */
+.hook-section-header {
+  padding: 15px 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.hook-section-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.header-green {
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+}
+
+.header-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #2196F3 100%);
+}
+
+.header-orange {
+  background: linear-gradient(135deg, #f97316 0%, #FF9800 100%);
+}
+
+.header-purple {
+  background: linear-gradient(135deg, #a855f7 0%, #9C27B0 100%);
+}
+
+.header-pink {
+  background: linear-gradient(135deg, #ec4899 0%, #E91E63 100%);
+}
+
+.header-dark {
+  background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+}
+
+/* Section Content */
+.hook-section-content {
+  padding: 25px;
+}
+
+.hook-description {
+  margin-top: 20px;
+  padding: 15px;
+  background: var(--color-bg-tertiary);
+  border-left: 3px solid var(--color-accent-primary);
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.hook-description p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.hook-description strong {
+  color: var(--color-text-primary);
+}
+
+/* Comparison Table */
+.comparison-table-section {
+  margin-top: 40px;
+  background: var(--color-bg-secondary);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper {
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.comparison-table thead tr {
+  border-bottom: 2px solid var(--color-accent-primary);
+  background: var(--color-bg-tertiary);
+}
+
+.comparison-table th {
+  padding: 15px;
+  text-align: left;
+  color: var(--color-accent-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.comparison-table tbody tr {
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.2s ease;
+}
+
+.comparison-table tbody tr:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.comparison-table td {
+  padding: 15px;
+  color: var(--color-text-primary);
+}
+
+.comparison-table td strong {
+  color: var(--color-accent-primary);
+}
+
+/* Key Concepts Section */
+.key-concepts-section {
+  margin-top: 40px;
+  background: var(--color-bg-secondary);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.concepts-grid {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.concept-card {
+  padding: 20px;
+  background: var(--color-bg-tertiary);
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.concept-card:hover {
+  border-color: var(--color-accent-primary);
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.concept-card h4 {
+  margin: 0 0 10px 0;
+  color: var(--color-accent-primary);
+  font-size: 1.1rem;
+}
+
+.concept-card p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Pro Tips Section */
+.pro-tips-section {
+  margin-top: 40px;
+  padding: 25px;
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-success);
+}
+
+.pro-tips-section h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--color-success);
+  font-size: 1.3rem;
+}
+
+.pro-tips-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pro-tips-section li {
+  padding: 10px 0;
+  padding-left: 25px;
+  color: var(--color-text-secondary);
+  position: relative;
+  line-height: 1.6;
+}
+
+.pro-tips-section li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-success);
+  font-weight: bold;
+}
+
+/* Input and Form Styles */
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-text-primary);
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent-primary);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.form-input:disabled,
+.form-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Button Styles */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: var(--color-bg-tertiary);
+  color: var(--color-accent-primary);
+  border: 1px solid var(--color-accent-primary);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: var(--color-accent-primary);
+}
+
+/* Error and Success Messages */
+.alert {
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  border-left: 4px solid;
+  line-height: 1.6;
+}
+
+.alert-error {
+  background: rgba(255, 107, 107, 0.1);
+  color: var(--color-error);
+  border-left-color: var(--color-error);
+}
+
+.alert-success {
+  background: rgba(74, 222, 128, 0.1);
+  color: var(--color-success);
+  border-left-color: var(--color-success);
+}
+
+.alert-warning {
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--color-warning);
+  border-left-color: var(--color-warning);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .server-actions-showcase {
+    padding: 20px;
+  }
+
+  .showcase-title {
+    font-size: 1.8rem;
+  }
+
+  .concepts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-table {
+    font-size: 12px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .server-actions-showcase {
+    padding: 15px;
+  }
+
+  .showcase-title {
+    font-size: 1.5rem;
+  }
+
+  .showcase-subtitle {
+    font-size: 14px;
+  }
+
+  .hook-section-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .hook-section-content {
+    padding: 15px;
+  }
+
+  .table-wrapper {
+    padding: 10px;
+  }
+
+  .comparison-table {
+    font-size: 11px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 8px 5px;
+  }
+}

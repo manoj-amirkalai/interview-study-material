@@ -1,0 +1,64 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111827;
+  --progress-bg: #e5e7eb;
+  --progress-fill: #2563eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #0f172a;
+    --text-color: #f1f5f9;
+    --progress-bg: #1e293b;
+    --progress-fill: #3b82f6;
+  }
+}
+
+.download-container {
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  font-family: sans-serif;
+}
+
+button {
+  background: var(--progress-fill);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.progress-wrapper {
+  margin-top: 15px;
+  position: relative;
+  height: 20px;
+  background: var(--progress-bg);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  line-height: 20px;
+  color: white;
+  font-weight: 600;
+}
