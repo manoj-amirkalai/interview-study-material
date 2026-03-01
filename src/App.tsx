@@ -13,7 +13,7 @@ import React18Features from './components/React18Features/React18Features';
 import AssetLoadingOptimization from './components/React19Features/AssetLoadingOptimization';
 import ServerActionsShowcase from './components/ServerActionsHooks/ServerActionsShowcase';
 import SuspenseImageLazyLoading from './components/SuspenseImageLazyLoading/SuspenseImageLazyLoading';
-import ProgressBar from './components/ProgressBar/ProgressBar';
+import FileTransfer from './components/ProgressBar/FileTransfer';
 
 function App() {
   return (
@@ -32,7 +32,7 @@ function App() {
         <Route path="/asset-loading-optimization" element={<AssetLoadingOptimization />} />
         <Route path="/server-actions-hooks" element={<ServerActionsShowcase />} />
         <Route path="/suspense-lazy-loading" element={<SuspenseImageLazyLoading />} />
-        <Route path="/progress-bar" element={<ProgressBar />} />
+        <Route path="/progress-bar" element={<FileTransfer />} />
       </Routes>
     </div>
   );
